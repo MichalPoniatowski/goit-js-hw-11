@@ -88,21 +88,24 @@ function showPhotoCards(photos) {
     .map(
       card => `
       <div class="photo-card">
-         <a href="${card.largeImageURL}">
-         <img src="${card.webformatURL}" width="200" alt="${card.tags}" loading="lazy" />
-         </a>
-         <div class="info">
+        <div class="photo-small">
+          <a href="${card.largeImageURL}">
+            <img src="${card.webformatURL}" width="100%" alt="${card.tags}" loading="lazy" />
+          </a>
+        </div>
+        
+        <div class="info">
            <p class="info-item">
-             <b>Likes: ${card.likes}</b>
+             <b>Likes:<br>${card.likes}</b>
            </p>
            <p class="info-item">
-             <b>Views: ${card.views}</b>
+             <b>Views:<br>${card.views}</b>
            </p>
            <p class="info-item">
-             <b>Comments: ${card.comments}</b>
+             <b>Comments:<br>${card.comments}</b>
            </p>
            <p class="info-item">
-             <b>Downloads: ${card.downloads}</b>
+             <b>Downloads:<br>${card.downloads}</b>
            </p>
         </div>
        </div>`
