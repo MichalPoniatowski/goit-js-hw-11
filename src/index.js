@@ -88,7 +88,7 @@ function showPhotoCards(photos) {
     .map(
       card => `
       <div class="photo-card">
-        <div class="photo-small">
+        <div class="photo-container">
           <a href="${card.largeImageURL}">
             <img src="${card.webformatURL}" width="100%" alt="${card.tags}" loading="lazy" />
           </a>
