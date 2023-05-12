@@ -7,6 +7,7 @@ const KEY = '36285861-168bae95e05873f7547dc914e';
 const API_URL = 'https://pixabay.com/api/?';
 let page = 1;
 let perPage = 40;
+let existsPhotos = [];
 
 const formEl = document.getElementById('search-form');
 // const buttonEl = document.querySelector('.search-button');
@@ -65,7 +66,7 @@ const loadPhotos = () => {
             .querySelector('.gallery')
             .firstElementChild.getBoundingClientRect();
           window.scrollBy({
-            top: cardHeight * 2,
+            top: cardHeight * 4,
             behavior: 'smooth',
           });
         }
@@ -81,7 +82,9 @@ formEl.addEventListener('submit', event => {
 
 function showPhotoCards(photos) {
   const arrayOfPhotos = photos.data.hits;
-  return arrayOfPhotos
+  existsPhotos.push(...arrayOfPhotos);
+
+  return existsPhotos
     .map(
       card => `
       <div class="photo-card">
@@ -108,6 +111,8 @@ function showPhotoCards(photos) {
 }
 
 loadMoreBtn.addEventListener('click', event => {
+  event.preventDefault();
   page++;
+
   loadPhotos();
 });
