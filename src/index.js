@@ -15,15 +15,9 @@ const inputEl = document.querySelector('input[type="text"]');
 const galleryEl = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 
-const clearSearch = () => {
-  if (inputEl.value === '') {
-    galleryEl.innerHTML = '';
-  }
-};
-
-// if (inputEl.value === '') {
-//   galleryEl.innerHTML = '';
-// }
+function clearSearch() {
+  galleryEl.innerHTML = '';
+}
 
 const fetchPhotos = async () => {
   const data = await axios.get(API_URL, {
@@ -41,6 +35,7 @@ const fetchPhotos = async () => {
 };
 
 const loadPhotos = () => {
+  // clearSearch();
   fetchPhotos()
     .then(photos => {
       let result = photos.data.totalHits;
@@ -87,7 +82,6 @@ formEl.addEventListener('submit', event => {
 function showPhotoCards(photos) {
   const arrayOfPhotos = photos.data.hits;
   existsPhotos.push(...arrayOfPhotos);
-
   return existsPhotos
     .map(
       card => `
