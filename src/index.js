@@ -1,9 +1,7 @@
 import Notiflix from 'notiflix';
 import axios from 'axios';
-
-// 1. Search bar
-// 2. Pobrać dane z serwera async await + axios
-// - key + konfiguracja zapytania żeby otrzymywać co chcę
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const KEY = '36285861-168bae95e05873f7547dc914e';
 const API_URL = 'https://pixabay.com/api/?';
@@ -14,6 +12,7 @@ const formEl = document.getElementById('search-form');
 // const buttonEl = document.querySelector('.search-button');
 const inputEl = document.querySelector('input[type="text"]');
 const galleryEl = document.querySelector('.gallery');
+const loadMoreBtn = document.querySelector('.load-more');
 
 const fetchPhotos = async () => {
   const data = await axios.get(API_URL, {
@@ -54,6 +53,20 @@ const loadPhotos = () => {
         Notiflix.Notify.success(`Hooray! We found ${result} images.)`);
         console.log(photos);
         galleryEl.innerHTML = showPhotoCards(photos);
+        let gallery = new SimpleLightbox('.gallery a');
+        gallery.on('show.simplelightbox');
+        if (page > 1) {
+          gallery.refresh();
+          console.log('galeryrefresh');
+
+          // const { height: cardHeight } =
+          //   galleryEl.firstElementChild.getBoundingClientRect();
+
+          // window.scrollBy({
+          //   top: cardHeight * 2,
+          //   behavior: 'smooth',
+          // });
+        }
       }
     })
     .catch(error => console.log(error));
@@ -71,7 +84,7 @@ function showPhotoCards(photos) {
       card => `
       <div class="photo-card">
          <a href="${card.largeImageURL}">
-         <img src="${card.webformatURL}" alt="${card.tags}" loading="lazy" />
+         <img src="${card.webformatURL}" width="200" alt="${card.tags}" loading="lazy" />
          </a>
          <div class="info">
            <p class="info-item">
@@ -91,3 +104,8 @@ function showPhotoCards(photos) {
     )
     .join('');
 }
+
+loadMoreBtn.addEventListener('click', event => {
+  page++;
+  loadPhotos();
+});
