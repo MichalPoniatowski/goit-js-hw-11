@@ -55,17 +55,19 @@ const loadPhotos = () => {
         galleryEl.innerHTML = showPhotoCards(photos);
         let gallery = new SimpleLightbox('.gallery a');
         gallery.on('show.simplelightbox');
+        loadMoreBtn.classList.remove('is-hidden');
+
         if (page > 1) {
           gallery.refresh();
           console.log('galeryrefresh');
 
-          // const { height: cardHeight } =
-          //   galleryEl.firstElementChild.getBoundingClientRect();
+          const { height: cardHeight } =
+            galleryEl.firstElementChild.getBoundingClientRect();
 
-          // window.scrollBy({
-          //   top: cardHeight * 2,
-          //   behavior: 'smooth',
-          // });
+          window.scrollBy({
+            top: cardHeight * 2,
+            behavior: 'smooth',
+          });
         }
       }
     })

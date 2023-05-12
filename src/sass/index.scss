@@ -1,16 +1,36 @@
 @import './common';
 @import './example';
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 .wrapper {
   max-width: 1600px;
-  margin: 25px auto;
+
+  // margin: 25px auto;
   padding: 0 15px;
+  margin: 0 auto;
+  background-color: aqua;
 }
 
 .search-form {
+  background-color: rgb(50, 95, 133);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 1.2rem;
+
+  // margin: 0 auto;
+}
+
+.search-form input {
+  border-radius: 0.3rem;
 }
 
 .search-button {
+  border-radius: 0.3rem;
 }
 
 .gallery {
@@ -34,4 +54,8 @@
   //   justify-content: center;
 
   //   text-align: center;
+}
+
+.is-hidden {
+  display: none;
 }
