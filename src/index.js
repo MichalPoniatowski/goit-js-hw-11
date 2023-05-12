@@ -15,6 +15,16 @@ const inputEl = document.querySelector('input[type="text"]');
 const galleryEl = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
 
+const clearSearch = () => {
+  if (inputEl.value === '') {
+    galleryEl.innerHTML = '';
+  }
+};
+
+// if (inputEl.value === '') {
+//   galleryEl.innerHTML = '';
+// }
+
 const fetchPhotos = async () => {
   const data = await axios.get(API_URL, {
     params: {
@@ -33,14 +43,7 @@ const fetchPhotos = async () => {
 const loadPhotos = () => {
   fetchPhotos()
     .then(photos => {
-      //   całkowity wyniki kilka tys:
-      console.log(photos.data.total);
-      //   całkowity wyniki na 1 zapytanie 500 recordów
-      console.log(photos.data.totalHits);
-
       let result = photos.data.totalHits;
-
-      const clearSearch = () => (inputEl.value = '');
 
       if (result === 0) {
         Notiflix.Notify.failure(
@@ -76,6 +79,7 @@ const loadPhotos = () => {
 };
 
 formEl.addEventListener('submit', event => {
+  clearSearch();
   event.preventDefault();
   loadPhotos();
 });

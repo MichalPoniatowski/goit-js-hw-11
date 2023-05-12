@@ -69,7 +69,7 @@
   background-color: rgb(54, 94, 14);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-row: 150px;
+  grid-row: 180px;
   grid-gap: 20px;
 }
 
@@ -83,7 +83,8 @@
 .photo-container {
   object-fit: cover;
   // object-fit: fill;
-  height: 80px;
+  height: 150px;
+  overflow: hidden;
 }
 
 .info {
