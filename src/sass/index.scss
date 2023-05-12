@@ -17,10 +17,13 @@
 }
 
 .search-form {
-  background-color: rgb(50, 95, 133);
+  // background-color: rgb(50, 95, 133);
   text-align: center;
   padding: 20px 0;
   font-size: 1.2rem;
+
+  border-bottom-width: 2px;
+  border-color: black;
 
   // margin: 0 auto;
 }
