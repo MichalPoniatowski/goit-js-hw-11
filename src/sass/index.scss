@@ -1,2 +1,34 @@
 @import './common';
 @import './example';
+
+.wrapper {
+  max-width: 1600px;
+  margin: 40px auto;
+}
+
+.search-form {
+}
+
+.search-button {
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.photo-card {
+  background-color: gray;
+}
+
+.load-more {
+  background-color: aqua;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
