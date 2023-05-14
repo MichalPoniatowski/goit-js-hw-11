@@ -10,13 +10,14 @@ let perPage = 40;
 let existsPhotos = [];
 
 const formEl = document.getElementById('search-form');
-// const buttonEl = document.querySelector('.search-button');
 const inputEl = document.querySelector('input[type="text"]');
 const galleryEl = document.querySelector('.gallery');
+const galleryWrapperEl = document.querySelector('.wrapper');
 const loadMoreBtn = document.querySelector('.load-more');
 
 function clearSearch() {
   galleryEl.innerHTML = '';
+  existsPhotos = [];
 }
 
 const fetchPhotos = async () => {
@@ -35,7 +36,6 @@ const fetchPhotos = async () => {
 };
 
 const loadPhotos = () => {
-  // clearSearch();
   fetchPhotos()
     .then(photos => {
       let result = photos.data.totalHits;
@@ -50,7 +50,7 @@ const loadPhotos = () => {
         );
       } else {
         Notiflix.Notify.success(`Hooray! We found ${result} images.)`);
-        console.log(photos);
+        // console.log(photos);
         galleryEl.innerHTML = showPhotoCards(photos);
         let gallery = new SimpleLightbox('.gallery a');
         gallery.on('show.simplelightbox');
@@ -73,11 +73,15 @@ const loadPhotos = () => {
     .catch(error => console.log(error));
 };
 
-formEl.addEventListener('submit', event => {
-  clearSearch();
-  event.preventDefault();
-  loadPhotos();
-});
+// formEl.addEventListener('keydown', event => {
+//   const value = event.target.value;
+//   console.log(value);
+
+//   if (value === '') {
+//     clearSearch();
+//     localStorage.clear();
+//   }
+// });
 
 function showPhotoCards(photos) {
   const arrayOfPhotos = photos.data.hits;
@@ -110,6 +114,13 @@ function showPhotoCards(photos) {
     )
     .join('');
 }
+
+formEl.addEventListener('submit', event => {
+  clearSearch();
+  console.log('exists Photos', existsPhotos);
+  event.preventDefault();
+  loadPhotos();
+});
 
 loadMoreBtn.addEventListener('click', event => {
   event.preventDefault();
