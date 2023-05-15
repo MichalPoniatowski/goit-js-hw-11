@@ -1,35 +1,40 @@
-@import './common';
-@import './example';
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+body {
+  background-color: rgb(65, 71, 71);
+}
+
 .wrapper {
   max-width: 1600px;
   padding: 0 15px;
   margin: 0 auto;
-  background-color: rgb(45, 153, 30);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .form-wrapper {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgb(87, 104, 119);
+  background: rgb(153, 8, 123);
+  background: linear-gradient(
+    90deg,
+    rgba(153, 8, 123, 0.8099614845938375) 10%,
+    rgba(20, 3, 115, 1) 90%
+  );
   border-bottom-style: solid;
-  border-width: 2px;
+  border-width: 1px;
   border-color: black;
-  margin: 0 auto;
-
-  display: flex;
-  justify-content: center;
+  box-shadow: 0px 2px 6px 1px black;
 }
 
 .search-form {
@@ -47,12 +52,16 @@
   border-radius: 0.3rem;
   background-color: rgb(15, 62, 78);
   color: white;
+  box-shadow: 0px 0px 3px 2px rgba(218, 102, 218, 1);
 }
 
 .load-more {
   border-radius: 0.3rem;
   background-color: rgb(15, 62, 78);
   color: white;
+  margin: 20px auto;
+  // box-shadow: 2px 2px 3px 1px black;
+  box-shadow: 0px 0px 3px 2px rgb(179, 18, 179);
 }
 
 .is-hidden {
@@ -66,33 +75,39 @@
 
 .gallery {
   padding-top: 100px;
-  background-color: rgb(54, 94, 14);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-row: 220px;
   grid-gap: 20px;
+  background-color: transparent;
 }
 
 .photo-card {
   background-color: rgb(44, 37, 37);
+  // background-color: rgb(99, 40, 40);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 3px 3px 7px 1px rgba(20, 20, 20, 1);
 }
 
 .photo-container {
   object-fit: cover;
   height: 200px;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: auto;
 }
 
 .info {
   display: flex;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   gap: calc((100% - 4 * 22%) / 3);
   padding: 10px;
   width: inherit;
   color: white;
+  margin: 0;
 }
 
 .info-item {

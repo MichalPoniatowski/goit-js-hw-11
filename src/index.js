@@ -73,16 +73,6 @@ const loadPhotos = () => {
     .catch(error => console.log(error));
 };
 
-// formEl.addEventListener('keydown', event => {
-//   const value = event.target.value;
-//   console.log(value);
-
-//   if (value === '') {
-//     clearSearch();
-//     localStorage.clear();
-//   }
-// });
-
 function showPhotoCards(photos) {
   const arrayOfPhotos = photos.data.hits;
   existsPhotos.push(...arrayOfPhotos);
@@ -92,7 +82,7 @@ function showPhotoCards(photos) {
       <div class="photo-card">
         <div class="photo-container">
           <a href="${card.largeImageURL}">
-            <img src="${card.webformatURL}" width="100%" alt="${card.tags}" loading="lazy" />
+            <img src="${card.webformatURL}" width=100% alt="${card.tags}" loading="lazy" />
           </a>
         </div>
         
