@@ -12,7 +12,6 @@ let existsPhotos = [];
 const formEl = document.getElementById('search-form');
 const inputEl = document.querySelector('input[type="text"]');
 const galleryEl = document.querySelector('.gallery');
-const galleryWrapperEl = document.querySelector('.wrapper');
 const loadMoreBtn = document.querySelector('.load-more');
 
 function clearSearch() {
@@ -50,21 +49,18 @@ const loadPhotos = () => {
         );
       } else {
         Notiflix.Notify.success(`Hooray! We found ${result} images.)`);
-        // console.log(photos);
         galleryEl.innerHTML = showPhotoCards(photos);
         let gallery = new SimpleLightbox('.gallery a');
         gallery.on('show.simplelightbox');
         loadMoreBtn.classList.remove('is-hidden');
-
         if (page >= 1) {
           gallery.refresh();
-          console.log('galeryrefresh');
 
           const { height: cardHeight } = document
             .querySelector('.gallery')
             .firstElementChild.getBoundingClientRect();
           window.scrollBy({
-            top: cardHeight * 4,
+            top: cardHeight * 3,
             behavior: 'smooth',
           });
         }
@@ -107,7 +103,6 @@ function showPhotoCards(photos) {
 
 formEl.addEventListener('submit', event => {
   clearSearch();
-  console.log('exists Photos', existsPhotos);
   event.preventDefault();
   loadPhotos();
 });
